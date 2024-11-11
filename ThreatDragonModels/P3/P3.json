@@ -20,8 +20,83 @@
         "cells": [
           {
             "position": {
+              "x": 359.9999999999999,
+              "y": 220.00000000000057
+            },
+            "size": {
+              "width": 390,
+              "height": 270
+            },
+            "shape": "trust-boundary-box",
+            "attrs": {
+              "headerText": {
+                "text": "Telefonanbieter"
+              }
+            },
+            "id": "f327d131-403a-41b3-8838-7a19d9e1001a",
+            "zIndex": -1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Telefonanbieter",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 210,
+              "y": -400
+            },
+            "size": {
+              "width": 1200,
+              "height": 570
+            },
+            "shape": "trust-boundary-box",
+            "attrs": {
+              "headerText": {
+                "text": "All Secure"
+              }
+            },
+            "id": "cf582894-4c0a-4cc4-a351-3f4ad53ff0fb",
+            "zIndex": -1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "All Secure",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 775,
+              "y": 247
+            },
+            "size": {
+              "width": 460,
+              "height": 600
+            },
+            "shape": "trust-boundary-box",
+            "attrs": {
+              "headerText": {
+                "text": "\nExterner Service\nOTT Versand"
+              }
+            },
+            "id": "1352046a-197c-40ab-b2d4-c144783155e5",
+            "zIndex": -1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "\nExterner Service\nOTT Versand",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
               "x": 12,
-              "y": 53
+              "y": 63
             },
             "size": {
               "width": 160,
@@ -32,8 +107,8 @@
                 "text": "User"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -48,8 +123,22 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "threats": [],
-              "hasOpenThreats": false,
+              "threats": [
+                {
+                  "id": "d672f5ea-6a0a-46fd-8d7d-6fa219b58a3f",
+                  "title": "User wurde gehackt",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "Ein User wurde gehackt und Username/Password + OTT konnten gedumpt werden. Da der OTT ein Jahr Gültigkeit hat, kann der Angreifer sich ohne Probleme einloggen.",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 108,
+                  "score": ""
+                }
+              ],
+              "hasOpenThreats": true,
               "providesAuthentication": false
             }
           },
@@ -67,8 +156,8 @@
                 "text": "Login System -\nWebapp +\nMobile App"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -96,15 +185,30 @@
                   "new": false,
                   "number": 101,
                   "score": "28"
+                },
+                {
+                  "id": "601b4082-3f8a-42c2-ba03-874f32ea6bd2",
+                  "title": "Bruteforce OTT",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Ein Angreifer konnte Username und Passwort eines Users abgreifen, hat jedoch seine OTT nicht. Aufgrund von nicht gegebenen Limitierungen in der WebApp kann er soviele OTT eingeben wie er möchte. Dies nutzt er aus und kann soviele OTT ausprobieren bis ihm das richtige Zugriff gewährt.\n\nCAPEC-112: Brute Force\nATTACK T1110:  Adversaries may use brute force techniques to gain access to accounts when passwords are unknown or when password hashes are obtained. (in this case OTT)\n\nD: 10 / R: 10 / E: 7 / A: 10 / DREA: 37",
+                  "mitigation": "Limitieren der OTT Eingaben auf 3 alle 10 Minuten. Nach 10 Minuten muss ein neuer OTT angefragt werden\n\nDEFEND: D3-AZET (Authorization Event Thresholding)\nASVS: 2.2.1 CWE-307 \nVerify that anti-automation controls are effective at mitigating\nbreached credential testing, brute force, and account lockout\nattacks. Such controls include blocking the most common\nbreached passwords, soft lockouts, rate limiting, CAPTCHA, ever\nincreasing delays between attempts, IP address restrictions, or\nrisk-based restrictions such as location, first login on a device,\nrecent attempts to unlock the account, or similar. Verify that no\nmore than 100 failed attempts per hour is possible on a single\naccount.\n\nD: 10 / R: 1 / E: 1 / A: 2 / DREA: 14",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 119,
+                  "score": "4"
                 }
               ],
-              "hasOpenThreats": false,
-              "isWebApplication": null
+              "hasOpenThreats": true,
+              "isWebApplication": null,
+              "handlesCardPayment": null,
+              "handlesGoodsOrServices": null
             }
           },
           {
             "position": {
-              "x": 488,
+              "x": 541,
               "y": -11.999999999999922
             },
             "size": {
@@ -116,8 +220,8 @@
                 "text": "2-Faktor-Authe\nntifizierungsdi\nenst"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -132,30 +236,47 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "threats": [],
-              "hasOpenThreats": false,
+              "threats": [
+                {
+                  "id": "eb4d2cbe-9703-4eee-80f9-d70ebea3943d",
+                  "title": "DDOS verhindert OTT Überprüfung",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "Wenn der Auth Service unerreichbar ist, dann ist ein Login ohne OTT möglich, da dieser keine Überprüfung fordert (kein Exception Handling bspw.).\n\nCAPEC-125: Flooding: An adversary consumes the resources of a target by rapidly engaging in a large number of interactions with the target.\nATTACK T1499: Adversaries may perform Endpoint Denial of Service (DoS) attacks to degrade or block the availability of services to users.\n\nD: 10/ R: 2 / E: 2 / A: 10 / DREA: 24",
+                  "mitigation": "Es wird eine Fehlermeldung ausgegeben, dass der Login zurzeit nicht möglich ist und man es später nocheinmal versuchen soll.\n\nASVS 11.1.1 - CWE-841 \nVerify that the application will only process business logic flows for the same\nuser in sequential step order and without skipping steps.\n\nD: 1 / R: 1 / E: 1 / A: 1 / DREA: 4\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 118,
+                  "score": "4"
+                }
+              ],
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "protocol": "",
               "isEncrypted": false,
-              "isPublicNetwork": false
+              "isPublicNetwork": false,
+              "handlesCardPayment": null,
+              "isWebApplication": null,
+              "handlesGoodsOrServices": null
             }
           },
           {
             "position": {
-              "x": 890,
-              "y": -47
+              "x": 850,
+              "y": -36.99999999999997
             },
             "size": {
-              "width": 120,
-              "height": 120
+              "width": 180,
+              "height": 140
             },
             "attrs": {
               "text": {
-                "text": "Telefonnummer-\nAPI-Gateway"
+                "text": "Allsecure Mobile \nPhone OTT Service"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -164,14 +285,31 @@
             "zIndex": 4,
             "id": "ebc88767-2bed-409f-b854-efadec206ba8",
             "data": {
-              "name": "Telefonnummer-\nAPI-Gateway",
+              "name": "Allsecure Mobile \nPhone OTT Service",
               "description": "",
               "type": "tm.Process",
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "threats": [],
-              "hasOpenThreats": false
+              "threats": [
+                {
+                  "id": "3c08a3a7-91bd-4fe6-aa1e-356f62b7c7c3",
+                  "title": "XSS um Telefonnummer vorzugeben",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Durch eine XSS Schwachstelle, kann der Angreifer seine eigene Telefonnummer an den OTT Service weitergeben.\n\nCAPEC-588: DOM-Based XSS\nContent Injection: T1659\nAdversaries may gain access and continuously communicate with victims by injecting malicious content into systems through online network traffic.\n\nD: 10/ R: 10 / E: 10 / A: 10 / DREA: 40",
+                  "mitigation": "14.4.3 Verify that a Content Security Policy (CSP) response header is in place that\nhelps mitigate impact for XSS attacks like HTML, DOM, JSON, and JavaScript\ninjection vulnerabilities.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 126,
+                  "score": "40"
+                }
+              ],
+              "hasOpenThreats": true,
+              "handlesCardPayment": null,
+              "handlesGoodsOrServices": null,
+              "isWebApplication": null
             }
           },
           {
@@ -225,13 +363,14 @@
               "isEncrypted": false,
               "isPublicNetwork": false,
               "handlesCardPayment": null,
-              "handlesGoodsOrServices": null
+              "handlesGoodsOrServices": null,
+              "isWebApplication": null
             }
           },
           {
             "position": {
-              "x": 1010,
-              "y": 286
+              "x": 990,
+              "y": 356
             },
             "size": {
               "width": 100,
@@ -264,8 +403,8 @@
           },
           {
             "position": {
-              "x": 1105,
-              "y": -80
+              "x": 1235,
+              "y": -1.9999999999999218
             },
             "size": {
               "width": 130,
@@ -288,7 +427,7 @@
             "data": {
               "name": "Telefon-Routing-\nInterface",
               "description": "",
-              "type": "tm.Flow",
+              "type": "tm.Process",
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -302,8 +441,8 @@
           },
           {
             "position": {
-              "x": 1010,
-              "y": 427
+              "x": 990,
+              "y": 490.00000000000057
             },
             "size": {
               "width": 100,
@@ -336,8 +475,8 @@
           },
           {
             "position": {
-              "x": 1010,
-              "y": 578
+              "x": 870,
+              "y": 658
             },
             "size": {
               "width": 100,
@@ -360,7 +499,7 @@
             "data": {
               "name": "Other Mobile\nPhone OTT\nService",
               "description": "",
-              "type": "tm.Flow",
+              "type": "tm.Process",
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -371,118 +510,6 @@
               "isEncrypted": false,
               "isPublicNetwork": false
             }
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "1. Auth Challenge",
-              "description": "",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "isTrustBoundary": false
-            },
-            "id": "35f9f840-c060-4c31-bf9a-0e17a95ddf66",
-            "labels": [
-              {
-                "position": 0.5,
-                "attrs": {
-                  "label": {
-                    "text": "Login"
-                  }
-                }
-              }
-            ],
-            "source": {
-              "cell": "dec51efb-bf55-4b9c-a294-0e45f4e823f6"
-            },
-            "target": {
-              "cell": "a1d5bbe6-465f-43bb-bd96-7ce687db37aa"
-            },
-            "vertices": [
-              {
-                "x": 237,
-                "y": 39
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Erwarteter OTT",
-              "description": "",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "isTrustBoundary": false
-            },
-            "id": "2503a360-01b6-4464-b35f-42c6fb583348",
-            "labels": [
-              {
-                "position": 0.5,
-                "attrs": {
-                  "label": {
-                    "text": "1. Auth Challenge"
-                  }
-                }
-              }
-            ],
-            "source": {
-              "cell": "a1d5bbe6-465f-43bb-bd96-7ce687db37aa"
-            },
-            "target": {
-              "cell": "94f68ce7-aa88-45a4-ba41-c0b62d6a959c"
-            },
-            "vertices": [
-              {
-                "x": 440,
-                "y": -10
-              }
-            ]
           },
           {
             "shape": "flow",
@@ -533,58 +560,12 @@
             "target": {
               "cell": "a1d5bbe6-465f-43bb-bd96-7ce687db37aa"
             },
-            "vertices": []
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "2a. Telefonnummer",
-              "description": "",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "isTrustBoundary": false
-            },
-            "id": "3f9c3edd-4fe5-4fc4-9239-2ca13291fc25",
-            "labels": [
+            "vertices": [
               {
-                "position": 0.5,
-                "attrs": {
-                  "label": {
-                    "text": "Telefonnummer, OTT"
-                  }
-                }
+                "x": 450,
+                "y": 130
               }
-            ],
-            "source": {
-              "cell": "94f68ce7-aa88-45a4-ba41-c0b62d6a959c"
-            },
-            "target": {
-              "cell": "fd7303e8-29d2-4d76-bf7d-87eb619ede69"
-            },
-            "vertices": []
+            ]
           },
           {
             "shape": "flow",
@@ -640,8 +621,8 @@
             },
             "vertices": [
               {
-                "x": 1055,
-                "y": -40
+                "x": 1140,
+                "y": 0
               }
             ]
           },
@@ -699,8 +680,8 @@
             },
             "vertices": [
               {
-                "x": 1065,
-                "y": 60
+                "x": 1090,
+                "y": 99
               }
             ]
           },
@@ -806,8 +787,8 @@
             },
             "vertices": [
               {
-                "x": 807,
-                "y": 373
+                "x": 787,
+                "y": 443
               }
             ]
           },
@@ -862,8 +843,8 @@
             },
             "vertices": [
               {
-                "x": 910,
-                "y": 500
+                "x": 890,
+                "y": 570
               }
             ]
           },
@@ -918,12 +899,8 @@
             },
             "vertices": [
               {
-                "x": 1230,
-                "y": 510
-              },
-              {
-                "x": 1160,
-                "y": 760
+                "x": 1140,
+                "y": 800
               },
               {
                 "x": 483,
@@ -982,16 +959,16 @@
             },
             "vertices": [
               {
-                "x": 1102,
-                "y": 657
+                "x": 1082,
+                "y": 727
               },
               {
-                "x": 675,
-                "y": 720
+                "x": 710,
+                "y": 910
               },
               {
-                "x": 370,
-                "y": 550
+                "x": 350,
+                "y": 620
               }
             ]
           },
@@ -1049,286 +1026,16 @@
             },
             "vertices": [
               {
-                "x": 799,
-                "y": 672
+                "x": 779,
+                "y": 742
               },
               {
-                "x": 529,
-                "y": 636
+                "x": 509,
+                "y": 706
               },
               {
-                "x": 430,
-                "y": 430
-              }
-            ]
-          },
-          {
-            "shape": "trust-broundary-curve",
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Boundary",
-              "name": "Externer Service für T\nelefonnummernauflö\nsung",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            },
-            "id": "8c690a8a-f100-4c4d-bd88-095a530ac220",
-            "labels": [
-              {
-                "position": {
-                  "distance": 0,
-                  "offset": 25.336937022630487
-                },
-                "attrs": {
-                  "label": {
-                    "text": "Firma Allsecure"
-                  }
-                }
-              }
-            ],
-            "source": {
-              "x": 241,
-              "y": 135
-            },
-            "target": {
-              "x": 246,
-              "y": 138
-            },
-            "vertices": [
-              {
-                "x": 623,
-                "y": 156
-              },
-              {
-                "x": 638,
-                "y": -46
-              },
-              {
-                "x": 550,
-                "y": -204
-              },
-              {
-                "x": 340,
-                "y": -174
-              },
-              {
-                "x": 243,
-                "y": -8
-              }
-            ]
-          },
-          {
-            "shape": "trust-broundary-curve",
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Boundary",
-              "name": "Externer Service für \nTelefonnummernauflösung (Telco)",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            },
-            "id": "e9f48ab7-0723-42ca-a3e4-2be07bb92559",
-            "labels": [
-              "Externer Service für \nTelefonnummernauflösung (Telco)"
-            ],
-            "source": {
-              "x": 846,
-              "y": 54
-            },
-            "target": {
-              "x": 846,
-              "y": 53
-            },
-            "vertices": [
-              {
-                "x": 822,
-                "y": -91
-              },
-              {
-                "x": 822,
-                "y": -130
-              },
-              {
-                "x": 899,
-                "y": -291
-              },
-              {
-                "x": 1162,
-                "y": -291
-              },
-              {
-                "x": 1275,
-                "y": -81
-              },
-              {
-                "x": 1194,
-                "y": 139
-              },
-              {
-                "x": 945,
-                "y": 169
-              }
-            ]
-          },
-          {
-            "shape": "trust-broundary-curve",
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Boundary",
-              "name": "Externer Service für\nden Versand des OTT",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            },
-            "id": "5d5f2170-50ee-404a-99f3-b55e2f657730",
-            "labels": [
-              {
-                "position": {
-                  "distance": 0.1607609674711048,
-                  "offset": 15.4290577443574
-                },
-                "attrs": {
-                  "label": {
-                    "text": "Telefonanbieter"
-                  }
-                }
-              }
-            ],
-            "source": {
-              "x": 540,
-              "y": 259
-            },
-            "target": {
-              "x": 539,
-              "y": 259
-            },
-            "vertices": [
-              {
-                "x": 460,
-                "y": 259
-              },
-              {
-                "x": 390,
-                "y": 305
-              },
-              {
-                "x": 420,
-                "y": 394
-              },
-              {
-                "x": 685,
-                "y": 394
-              },
-              {
-                "x": 710,
-                "y": 266
-              }
-            ]
-          },
-          {
-            "shape": "trust-broundary-curve",
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Boundary",
-              "name": "Externer Service für\nden Versand des OTT",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            },
-            "id": "7a4ae9f7-9dfd-4347-9730-472a9171c620",
-            "labels": [
-              {
-                "position": {
-                  "distance": 0.9492856006424079,
-                  "offset": -6.1135161076058475
-                },
-                "attrs": {
-                  "label": {
-                    "text": "Externer Service für\nden Versand des OTT"
-                  }
-                }
-              }
-            ],
-            "source": {
-              "x": 1251,
-              "y": 328
-            },
-            "target": {
-              "x": 1250,
-              "y": 326
-            },
-            "vertices": [
-              {
-                "x": 857,
-                "y": 281
-              },
-              {
-                "x": 880,
-                "y": 678
-              },
-              {
-                "x": 1233,
-                "y": 626
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Log(Login, OTT, Phone Number)",
-              "description": "",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "id": "81c8482c-19ed-41ab-bae2-a5561223b4b5",
-            "labels": [
-              "Log(Login, OTT, Phone Number)"
-            ],
-            "source": {
-              "cell": "94f68ce7-aa88-45a4-ba41-c0b62d6a959c"
-            },
-            "target": {
-              "cell": "c2716661-ef88-48a8-8d0f-724e1923d562"
-            },
-            "vertices": [
-              {
-                "x": 559.5,
-                "y": -60
+                "x": 410,
+                "y": 500
               }
             ]
           },
@@ -1421,12 +1128,7 @@
             "target": {
               "cell": "b1ef5a1b-e975-4fd3-8ba0-079c4b33533f"
             },
-            "vertices": [
-              {
-                "x": 1100,
-                "y": -91
-              }
-            ]
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -1482,8 +1184,8 @@
             },
             "vertices": [
               {
-                "x": 760,
-                "y": -10
+                "x": 730,
+                "y": 65
               }
             ]
           },
@@ -1542,14 +1244,562 @@
             "vertices": [
               {
                 "x": 770,
-                "y": 65
+                "y": 110
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "wöchentlicher\nReport",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "c34c2858-0be4-4e76-be49-63bcd06f2b55",
+            "source": {
+              "cell": "c334ede5-128b-48a4-910f-126e1182bc41"
+            },
+            "target": {
+              "cell": "31dca64a-7881-4e9b-804c-7bc2816a4bca"
+            },
+            "vertices": [],
+            "labels": [
+              "wöchentlicher\nReport"
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "speichert\nDaten",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "a3e1d40f-6283-4a29-8558-5912afafad6f",
+            "source": {
+              "cell": "c334ede5-128b-48a4-910f-126e1182bc41"
+            },
+            "target": {
+              "cell": "94eae331-ac7c-4728-9e17-b565229d83d4"
+            },
+            "vertices": [],
+            "labels": [
+              "speichert\nDaten"
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "erfasst Daten",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "a22877ad-15c4-492d-93ec-600964798be4",
+            "source": {
+              "cell": "c334ede5-128b-48a4-910f-126e1182bc41"
+            },
+            "target": {
+              "cell": "ebc88767-2bed-409f-b854-efadec206ba8"
+            },
+            "labels": [
+              "erfasst Daten"
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "erfasst Daten",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "19d7917d-8fcf-4c52-afdd-96a1c62a273f",
+            "source": {
+              "cell": "c334ede5-128b-48a4-910f-126e1182bc41"
+            },
+            "target": {
+              "cell": "94f68ce7-aa88-45a4-ba41-c0b62d6a959c"
+            },
+            "labels": [
+              "erfasst Daten"
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "8272797c-954b-41a9-a85c-21950cf2dc4d",
+            "source": {
+              "cell": "c2716661-ef88-48a8-8d0f-724e1923d562"
+            },
+            "target": {
+              "cell": "8edfe844-664c-4003-9ecb-5990ae488647"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "33f7d6f9-4042-4a8f-8285-d430e00e0383",
+            "source": {
+              "cell": "8edfe844-664c-4003-9ecb-5990ae488647"
+            },
+            "target": {
+              "cell": "5abc9dcc-1d27-4b1d-bddd-8dd4a86522dc"
+            },
+            "vertices": [
+              {
+                "x": 470,
+                "y": -280
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "speichert alle\nApp Daten",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "33d4fbd6-cfbf-4a32-9dec-aede67d34e73",
+            "source": {
+              "cell": "dec51efb-bf55-4b9c-a294-0e45f4e823f6"
+            },
+            "target": {
+              "cell": "ae277fcd-f713-4dc5-b6ba-db7d2eb08ce6"
+            },
+            "labels": [
+              "speichert alle\nApp Daten"
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Erwarteter OTT",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "isTrustBoundary": false
+            },
+            "id": "2503a360-01b6-4464-b35f-42c6fb583348",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "1. Auth Challenge"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "a1d5bbe6-465f-43bb-bd96-7ce687db37aa"
+            },
+            "target": {
+              "cell": "94f68ce7-aa88-45a4-ba41-c0b62d6a959c"
+            },
+            "vertices": [
+              {
+                "x": 440,
+                "y": -10
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Log(Login, OTT, Phone Number)",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "81c8482c-19ed-41ab-bae2-a5561223b4b5",
+            "labels": [
+              "Log(Login, OTT, Phone Number)"
+            ],
+            "source": {
+              "cell": "94f68ce7-aa88-45a4-ba41-c0b62d6a959c"
+            },
+            "target": {
+              "cell": "c2716661-ef88-48a8-8d0f-724e1923d562"
+            },
+            "vertices": [
+              {
+                "x": 490,
+                "y": -50
+              },
+              {
+                "x": 410,
+                "y": -90
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "verschlüsselte+\nsignierte Mail",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "1c5bce74-10de-41e1-b584-288276c90593",
+            "source": {
+              "cell": "31dca64a-7881-4e9b-804c-7bc2816a4bca"
+            },
+            "target": {
+              "cell": "5abc9dcc-1d27-4b1d-bddd-8dd4a86522dc"
+            },
+            "labels": [
+              "verschlüsselte+\nsignierte Mail"
+            ],
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "1. Auth Challenge",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "isTrustBoundary": false
+            },
+            "id": "35f9f840-c060-4c31-bf9a-0e17a95ddf66",
+            "labels": [
+              {
+                "position": 0.5,
+                "attrs": {
+                  "label": {
+                    "text": "Login"
+                  }
+                }
+              }
+            ],
+            "source": {
+              "cell": "dec51efb-bf55-4b9c-a294-0e45f4e823f6"
+            },
+            "target": {
+              "cell": "a1d5bbe6-465f-43bb-bd96-7ce687db37aa"
+            },
+            "vertices": [
+              {
+                "x": 237,
+                "y": 39
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "3e4fd692-7f3d-4ea3-be0f-e3270393cf56",
+            "source": {
+              "cell": "94f68ce7-aa88-45a4-ba41-c0b62d6a959c"
+            },
+            "target": {
+              "cell": "fd7303e8-29d2-4d76-bf7d-87eb619ede69"
+            },
+            "vertices": [
+              {
+                "x": 612.5,
+                "y": 190
               }
             ]
           },
           {
             "position": {
-              "x": 410,
-              "y": -174
+              "x": 285,
+              "y": -200
             },
             "size": {
               "width": 120,
@@ -1560,11 +1810,13 @@
                 "text": "Log-DB"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -1582,14 +1834,42 @@
               "storesCredentials": false,
               "isEncrypted": true,
               "isSigned": true,
-              "hasOpenThreats": false,
-              "threats": []
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "id": "c75f70c6-1502-4ce6-8602-9115c3fde60c",
+                  "title": "SQL Injection",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Ein User hat eine Sicherheitslücke im Überprüfen der Handynummer gefunden und kann eine SQL Injection in Rufnummerfeld durchführen. Dadurch kann er sich seitenweise Logs ausgeben und hat Zugriff auf alle Mobilfunknummern\n\nCAPEC-66: SQL Injection\nATTACK T1213: Data from Information Repositories\nAdversaries may leverage information repositories to mine valuable information. \n\nD: 10 / R: 2/ E: 2 / A: 10 / DREA: 24",
+                  "mitigation": "Eine Rufnummer sollte immer nur aus Zahlen bestehen, das \"+XY\" für die Ländervorwahl kann bspw. aus einer vorgegebenen Liste sein.\n\nASVS 5.1.4 - CWE 20\nVerify that structured data is strongly typed and validated against a defined\nschema including allowed characters, length and pattern (e.g. credit card\nnumbers, e-mail addresses, telephone numbers, or validating that two related\nfields are reasonable, such as checking that suburb and zip/postcode match).\n\nD: 2/ R:  1/ E: 1/ A: 1 / DREA: 5",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 103,
+                  "score": "0"
+                },
+                {
+                  "id": "af9f2a54-5daa-4230-a028-2037dcb41401",
+                  "title": "Angreifer hinterlässt keine Spur",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Angreifer benutzt spezielles Encoding, dass das System nicht verarbeiten kann, sodass keine Logs für die Angriffe gespeichert werden.\n\nCAPEC-571: Block Logging to Central Repository\nATTACK T1565: Data Manipulation\nAdversaries may insert, delete, or manipulate data in order to influence external outcomes or hide activity, thus threatening the integrity of the data.\n\nD: 0 / R: 10 / E: 10 / A: 0 / DREA: 36",
+                  "mitigation": "Standardmäßig sollte jeder Input sanitized werden und das Encoding UTf-8 benutzt werden\n\nASVS 5.3.1 - CWE 116\nVerify that output encoding is relevant for the interpreter and context\nrequired. For example, use encoders specifically for HTML values, HTML\nattributes, JavaScript, URL parameters, HTTP headers, SMTP, and others as\nthe context requires, especially from untrusted inputs (e.g. names with\nUnicode or apostrophes, such as ねこ or O'Hara).\n\nD: 1 / R:  3 / E: 2 / A: 2 / DREA: 8",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 109,
+                  "score": "8"
+                }
+              ],
+              "storesInventory": null
             }
           },
           {
             "position": {
-              "x": 421,
-              "y": 311
+              "x": 410,
+              "y": 281
             },
             "size": {
               "width": 120,
@@ -1628,8 +1908,8 @@
           },
           {
             "position": {
-              "x": 965,
-              "y": -240
+              "x": 1240,
+              "y": -156.99999999999997
             },
             "size": {
               "width": 120,
@@ -1653,7 +1933,7 @@
             "zIndex": 13,
             "id": "b1ef5a1b-e975-4fd3-8ba0-079c4b33533f",
             "data": {
-              "type": "tm.Flow",
+              "type": "tm.Store",
               "name": "Routing-\nInformation-DB",
               "description": "",
               "outOfScope": false,
@@ -1668,6 +1948,261 @@
               "protocol": "",
               "isPublicNetwork": false
             }
+          },
+          {
+            "position": {
+              "x": 729.9999999999999,
+              "y": -110
+            },
+            "size": {
+              "width": 60,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "SIEM"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "c334ede5-128b-48a4-910f-126e1182bc41",
+            "zIndex": 14,
+            "data": {
+              "type": "tm.Process",
+              "name": "SIEM",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "b1028ed6-ed8e-446d-a414-7d961a92fc33",
+                  "title": "SIEM API nicht gesichert",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Aufgrund einer Fehlkonfiguration kann ein normaler User Zugriff auf das SIEM System bekommen. Er kann somit alle gesammelten Daten/Events einsehen.\n\nCAPEC-180: Exploiting Incorrectly Configured Access Control Security Levels\nATTACK T1190: Exploit Public-Facing Application\nAdversaries may attempt to exploit a weakness in an Internet-facing host or system to initially access a network.\n\nD: 10 / R: 10 / E: 10/ A: 10 / DREA: 40",
+                  "mitigation": "Die Konfiguration wird geändert, sodass nur aus dem internen Netzwerk auf das SIEM zugegriffen werden kann. \n\nASVS 1.2.2 - CWE 306\nVerify that communications between application components, including APIs,\nmiddleware and data layers, are authenticated. Components should have the\nleast necessary privileges needed.\n\nD: 1/ R: 1/ E: 1/ A: 1/ DREA: 4\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 111,
+                  "score": "4"
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 549.75,
+              "y": -490
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Management"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "id": "5abc9dcc-1d27-4b1d-bddd-8dd4a86522dc",
+            "zIndex": 15,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Management",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 551,
+              "y": -230
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "SIEM DB"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "id": "94eae331-ac7c-4728-9e17-b565229d83d4",
+            "zIndex": 16,
+            "data": {
+              "type": "tm.Store",
+              "name": "SIEM DB",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 810,
+              "y": -250
+            },
+            "size": {
+              "width": 60,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Mail\nServer"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "31dca64a-7881-4e9b-804c-7bc2816a4bca",
+            "zIndex": 17,
+            "data": {
+              "type": "tm.Process",
+              "name": "Mail\nServer",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "afb521fe-ae07-4c00-898c-3e1d7a194b9f",
+                  "title": "Software Bug",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "Durch einen Software Bug war es möglich, dass ein Angreifer ohne Authentifizierung auf die Daten des Mailservers Zugriff hatte, indem das CC Feld exploited wurde.\n\n(Echter Fall: https://www.threatdown.com/blog/zimbra-smtp-vulnerability-is-being-exploited-in-numbers/)\n\nCAPEC-115: Authentication Bypass\nATTACK T1556: Modify Authentication Process\nAdversaries may modify authentication mechanisms and processes to access user credentials or enable otherwise unwarranted access to accounts. \n\nD: 10/ R: 4/ E: 10 / A: 5 / DREA: 31",
+                  "mitigation": "Der Mailserver ist nur noch aus dem internen Netz verfügbar, der Mailserver wird wöchentlich auf Updates geprüft.\n\nASVS 3.7.1 - CWE 306\nVerify the application ensures a full, valid login session or requires reauthentication or secondary verification before allowing any sensitive transactions or account modifications\n\nASVS 5.2.3 CWE - 147\nVerify that the application sanitizes user input before passing to mail systems\nto protect against SMTP or IMAP injection.\n\nD: 4/ R: 4/ E: 7/ A: 4/ DREA: 19",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 128,
+                  "score": "19"
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 290,
+              "y": -340
+            },
+            "size": {
+              "width": 110,
+              "height": 70
+            },
+            "attrs": {
+              "text": {
+                "text": "Export"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "8edfe844-664c-4003-9ecb-5990ae488647",
+            "zIndex": 18,
+            "data": {
+              "type": "tm.Process",
+              "name": "Export",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 32,
+              "y": 251
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "SD Karte"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "id": "ae277fcd-f713-4dc5-b6ba-db7d2eb08ce6",
+            "zIndex": 19,
+            "data": {
+              "type": "tm.Store",
+              "name": "SD Karte",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": []
+            }
           }
         ],
         "version": "2.1.1",
@@ -1679,7 +2214,7 @@
     ],
     "reviewer": "Georg Neugebauer",
     "diagramTop": 10,
-    "threatTop": 102
+    "threatTop": 130
   },
   "version": "2.1.1"
 }
