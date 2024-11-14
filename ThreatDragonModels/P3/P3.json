@@ -33,8 +33,8 @@
                 "text": "Telefonanbieter"
               }
             },
-            "id": "f327d131-403a-41b3-8838-7a19d9e1001a",
             "zIndex": -1,
+            "id": "f327d131-403a-41b3-8838-7a19d9e1001a",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "Telefonanbieter",
@@ -58,8 +58,8 @@
                 "text": "All Secure"
               }
             },
-            "id": "cf582894-4c0a-4cc4-a351-3f4ad53ff0fb",
             "zIndex": -1,
+            "id": "cf582894-4c0a-4cc4-a351-3f4ad53ff0fb",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "All Secure",
@@ -83,8 +83,8 @@
                 "text": "\nExterner Service\nOTT Versand"
               }
             },
-            "id": "1352046a-197c-40ab-b2d4-c144783155e5",
             "zIndex": -1,
+            "id": "1352046a-197c-40ab-b2d4-c144783155e5",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "\nExterner Service\nOTT Versand",
@@ -130,12 +130,12 @@
                   "status": "Open",
                   "severity": "Medium",
                   "type": "Spoofing",
-                  "description": "Ein User wurde gehackt und Username/Password + OTT konnten gedumpt werden. Da der OTT ein Jahr Gültigkeit hat, kann der Angreifer sich ohne Probleme einloggen.",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "description": "Ein User wurde gehackt und die Session konnte gedumpt werden. Da der OTT ein Jahr Gültigkeit hat, kann der Angreifer sich ohne Probleme einloggen, indem er die Sessiondatei in einen Emulator kopiert.\n\nCAPEC-593: Session Hijacking\nATTACK T1539: Steal Web Session Cookie\nAn adversary may steal web application or service session cookies and use them to gain access to web applications or Internet services as an authenticated user without needing credentials\n\nD:10 \\R:1 \\E:7 \\A:1 DREA: 29",
+                  "mitigation": "ASVS 3.3.2 (Session Termination) - CWE 613\nIf authenticators permit users to remain\nlogged in, verify that re-authentication\noccurs periodically both when actively used\nor after an idle period. \n\nD:2 \\R:1 \\E:1 \\A:1 DREA: 5",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 108,
-                  "score": ""
+                  "score": "5"
                 }
               ],
               "hasOpenThreats": true,
@@ -193,7 +193,7 @@
                   "severity": "High",
                   "type": "Spoofing",
                   "description": "Ein Angreifer konnte Username und Passwort eines Users abgreifen, hat jedoch seine OTT nicht. Aufgrund von nicht gegebenen Limitierungen in der WebApp kann er soviele OTT eingeben wie er möchte. Dies nutzt er aus und kann soviele OTT ausprobieren bis ihm das richtige Zugriff gewährt.\n\nCAPEC-112: Brute Force\nATTACK T1110:  Adversaries may use brute force techniques to gain access to accounts when passwords are unknown or when password hashes are obtained. (in this case OTT)\n\nD: 10 / R: 10 / E: 7 / A: 10 / DREA: 37",
-                  "mitigation": "Limitieren der OTT Eingaben auf 3 alle 10 Minuten. Nach 10 Minuten muss ein neuer OTT angefragt werden\n\nDEFEND: D3-AZET (Authorization Event Thresholding)\nASVS: 2.2.1 CWE-307 \nVerify that anti-automation controls are effective at mitigating\nbreached credential testing, brute force, and account lockout\nattacks. Such controls include blocking the most common\nbreached passwords, soft lockouts, rate limiting, CAPTCHA, ever\nincreasing delays between attempts, IP address restrictions, or\nrisk-based restrictions such as location, first login on a device,\nrecent attempts to unlock the account, or similar. Verify that no\nmore than 100 failed attempts per hour is possible on a single\naccount.\n\nD: 10 / R: 1 / E: 1 / A: 2 / DREA: 14",
+                  "mitigation": "Limitieren der OTT Eingaben auf 3 alle 10 Minuten. Nach den 10 Minuten muss ein neuer OTT angefragt werden. Sollte der User beim 2. Durchgang immernoch das OTT zum 3. Mal falsch eingeben, User sperren.\n\nDEFEND: D3-AZET (Authorization Event Thresholding)\nASVS: 2.2.1 CWE-307 \nVerify that anti-automation controls are effective at mitigating\nbreached credential testing, brute force, and account lockout\nattacks. Such controls include blocking the most common\nbreached passwords, soft lockouts, rate limiting, CAPTCHA, ever\nincreasing delays between attempts, IP address restrictions, or\nrisk-based restrictions such as location, first login on a device,\nrecent attempts to unlock the account, or similar. Verify that no\nmore than 100 failed attempts per hour is possible on a single\naccount.\n\nD: 10 / R: 1 / E: 1 / A: 2 / DREA: 14",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 119,
@@ -298,8 +298,8 @@
                   "status": "Open",
                   "severity": "High",
                   "type": "Tampering",
-                  "description": "Durch eine XSS Schwachstelle, kann der Angreifer seine eigene Telefonnummer an den OTT Service weitergeben.\n\nCAPEC-588: DOM-Based XSS\nContent Injection: T1659\nAdversaries may gain access and continuously communicate with victims by injecting malicious content into systems through online network traffic.\n\nD: 10/ R: 10 / E: 10 / A: 10 / DREA: 40",
-                  "mitigation": "14.4.3 Verify that a Content Security Policy (CSP) response header is in place that\nhelps mitigate impact for XSS attacks like HTML, DOM, JSON, and JavaScript\ninjection vulnerabilities.",
+                  "description": "Durch eine XSS Schwachstelle, kann der Angreifer seine eigene Telefonnummer an den OTT Service weitergeben, wenn er Username und Passwort hat.\n\nCAPEC-588: DOM-Based XSS\nContent Injection: T1659\nAdversaries may gain access and continuously communicate with victims by injecting malicious content into systems through online network traffic.\n\nD: 10/ R: 10 / E: 10 / A: 2 / DREA: 32",
+                  "mitigation": "XSS Schwachstelle beseitigen und Überprüfen ob weitere vorhanden sind.\n\nASVS 14.4.3 - CWE 1021\nVerify that a Content Security Policy (CSP) response header is in place that\nhelps mitigate impact for XSS attacks like HTML, DOM, JSON, and JavaScript\ninjection vulnerabilities.\n\nD: 2/ R: 1/ E: 3/ A: 1/ DREA: 7",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 126,
@@ -1280,16 +1280,16 @@
               "threats": []
             },
             "id": "c34c2858-0be4-4e76-be49-63bcd06f2b55",
+            "labels": [
+              "wöchentlicher\nReport"
+            ],
             "source": {
               "cell": "c334ede5-128b-48a4-910f-126e1182bc41"
             },
             "target": {
               "cell": "31dca64a-7881-4e9b-804c-7bc2816a4bca"
             },
-            "vertices": [],
-            "labels": [
-              "wöchentlicher\nReport"
-            ]
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -1323,16 +1323,16 @@
               "threats": []
             },
             "id": "a3e1d40f-6283-4a29-8558-5912afafad6f",
+            "labels": [
+              "speichert\nDaten"
+            ],
             "source": {
               "cell": "c334ede5-128b-48a4-910f-126e1182bc41"
             },
             "target": {
               "cell": "94eae331-ac7c-4728-9e17-b565229d83d4"
             },
-            "vertices": [],
-            "labels": [
-              "speichert\nDaten"
-            ]
+            "vertices": []
           },
           {
             "shape": "flow",
@@ -1366,15 +1366,15 @@
               "threats": []
             },
             "id": "a22877ad-15c4-492d-93ec-600964798be4",
+            "labels": [
+              "erfasst Daten"
+            ],
             "source": {
               "cell": "c334ede5-128b-48a4-910f-126e1182bc41"
             },
             "target": {
               "cell": "ebc88767-2bed-409f-b854-efadec206ba8"
-            },
-            "labels": [
-              "erfasst Daten"
-            ]
+            }
           },
           {
             "shape": "flow",
@@ -1408,15 +1408,15 @@
               "threats": []
             },
             "id": "19d7917d-8fcf-4c52-afdd-96a1c62a273f",
+            "labels": [
+              "erfasst Daten"
+            ],
             "source": {
               "cell": "c334ede5-128b-48a4-910f-126e1182bc41"
             },
             "target": {
               "cell": "94f68ce7-aa88-45a4-ba41-c0b62d6a959c"
-            },
-            "labels": [
-              "erfasst Daten"
-            ]
+            }
           },
           {
             "shape": "flow",
@@ -1534,15 +1534,15 @@
               "threats": []
             },
             "id": "33d4fbd6-cfbf-4a32-9dec-aede67d34e73",
+            "labels": [
+              "speichert alle\nApp Daten"
+            ],
             "source": {
               "cell": "dec51efb-bf55-4b9c-a294-0e45f4e823f6"
             },
             "target": {
               "cell": "ae277fcd-f713-4dc5-b6ba-db7d2eb08ce6"
-            },
-            "labels": [
-              "speichert alle\nApp Daten"
-            ]
+            }
           },
           {
             "shape": "flow",
@@ -1684,15 +1684,15 @@
               "threats": []
             },
             "id": "1c5bce74-10de-41e1-b584-288276c90593",
+            "labels": [
+              "verschlüsselte+\nsignierte Mail"
+            ],
             "source": {
               "cell": "31dca64a-7881-4e9b-804c-7bc2816a4bca"
             },
             "target": {
               "cell": "5abc9dcc-1d27-4b1d-bddd-8dd4a86522dc"
             },
-            "labels": [
-              "verschlüsselte+\nsignierte Mail"
-            ],
             "vertices": []
           },
           {
@@ -1970,8 +1970,8 @@
             },
             "visible": true,
             "shape": "process",
-            "id": "c334ede5-128b-48a4-910f-126e1182bc41",
             "zIndex": 14,
+            "id": "c334ede5-128b-48a4-910f-126e1182bc41",
             "data": {
               "type": "tm.Process",
               "name": "SIEM",
@@ -2002,7 +2002,7 @@
           },
           {
             "position": {
-              "x": 549.75,
+              "x": 558.5,
               "y": -490
             },
             "size": {
@@ -2021,8 +2021,8 @@
             },
             "visible": true,
             "shape": "actor",
-            "id": "5abc9dcc-1d27-4b1d-bddd-8dd4a86522dc",
             "zIndex": 15,
+            "id": "5abc9dcc-1d27-4b1d-bddd-8dd4a86522dc",
             "data": {
               "type": "tm.Actor",
               "name": "Management",
@@ -2058,8 +2058,8 @@
             },
             "visible": true,
             "shape": "store",
-            "id": "94eae331-ac7c-4728-9e17-b565229d83d4",
             "zIndex": 16,
+            "id": "94eae331-ac7c-4728-9e17-b565229d83d4",
             "data": {
               "type": "tm.Store",
               "name": "SIEM DB",
@@ -2096,8 +2096,8 @@
             },
             "visible": true,
             "shape": "process",
-            "id": "31dca64a-7881-4e9b-804c-7bc2816a4bca",
             "zIndex": 17,
+            "id": "31dca64a-7881-4e9b-804c-7bc2816a4bca",
             "data": {
               "type": "tm.Process",
               "name": "Mail\nServer",
@@ -2140,27 +2140,41 @@
                 "text": "Export"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
             "visible": true,
             "shape": "process",
-            "id": "8edfe844-664c-4003-9ecb-5990ae488647",
             "zIndex": 18,
+            "id": "8edfe844-664c-4003-9ecb-5990ae488647",
             "data": {
               "type": "tm.Process",
               "name": "Export",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "358c6c6e-51d1-4db4-bd9d-a22cb73aac0f",
+                  "title": "New STRIDE threat",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "Provide a description for this threat",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": true,
+                  "number": 0,
+                  "score": ""
+                }
+              ]
             }
           },
           {
@@ -2187,8 +2201,8 @@
             },
             "visible": true,
             "shape": "store",
-            "id": "ae277fcd-f713-4dc5-b6ba-db7d2eb08ce6",
             "zIndex": 19,
+            "id": "ae277fcd-f713-4dc5-b6ba-db7d2eb08ce6",
             "data": {
               "type": "tm.Store",
               "name": "SD Karte",
@@ -2214,7 +2228,7 @@
     ],
     "reviewer": "Georg Neugebauer",
     "diagramTop": 10,
-    "threatTop": 130
+    "threatTop": 131
   },
-  "version": "2.1.1"
+  "version": "2.2.0"
 }
